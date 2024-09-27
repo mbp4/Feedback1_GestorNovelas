@@ -20,9 +20,9 @@ import com.example.feedback1_gestornovelas.ui.theme.Feedback1_GestorNovelasTheme
 class MainActivity : ComponentActivity() {
     private lateinit var btnAlta: Button
     private lateinit var btnAcercaDe: Button
-    private lateinit var novelas: MutableList <Novela>
     private lateinit var recyclerNovelas: RecyclerView
-
+    private lateinit var novelasAdapter: NovelasAdapter
+    private var listadoNovelas: MutableList <Novela> = NovelasRepository.novelas
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
 
         btnAlta.setOnClickListener {
             val intent = Intent(this, NuevaNovelaActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_CODE_ALTA_NOVELA)
         }
 
         btnAcercaDe.setOnClickListener {
@@ -41,18 +41,30 @@ class MainActivity : ComponentActivity() {
             startActivity(intent)
         }
 
-        novelas = mutableListOf()
-        novelas.add(Novela("La llamada de Cthulhu", "H. P. Lovecraft", 1928, ""))
-        novelas.add(Novela("La llamada de Pepito", "Manuel", 1948, ""))
-        novelas.add(Novela("La llamada de Manuel", "Jose", 1932, ""))
-        novelas.add(Novela("La llamada de Juan", "Anonimo", 1928, ""))
-        novelas.add(Novela("La llamada de Pedro", "Maria", 1976, ""))
+        novelasAdapter = NovelasAdapter(listadoNovelas){
+            novela -> val intent = Intent(this, VerNovelaActivity::class.java)
+            intent.putExtra("Titulo", novela.titulo)
+            intent.putExtra("Autor", novela.autor)
+            intent.putExtra("Año", novela.año)
+            intent.putExtra("Sinopsis", novela.sinopsis)
+            startActivity(intent)
+        }
 
         recyclerNovelas = findViewById(R.id.recyclerNovelas)
-        recyclerNovelas.adapter = NovelasAdapter(novelas)
+        recyclerNovelas.adapter = novelasAdapter
         recyclerNovelas.layoutManager = LinearLayoutManager(this)
 
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_ALTA_NOVELA && resultCode == RESULT_OK) {
+            novelasAdapter.notifyDataSetChanged()
+        }
+    }
+
+    companion object {
+        private const val REQUEST_CODE_ALTA_NOVELA = 1
     }
 
 }

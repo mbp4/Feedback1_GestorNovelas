@@ -2,40 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/teal_200"
-    >
-
-    <TextView
-        android:id="@+id/textTituloNovel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="titulo" />
+    android:layout_height="match_parent">
 
 
     <TextView
-        android:id="@+id/textAutorNovel"
+        android:id="@+id/txt1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="autor" />
+        android:text="TextView" />
 
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/txt3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/txt4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
     <Button
-        android:id="@+id/btnVer"
+        android:id="@+id/btnVolver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ver" />
-
-    <Button
-        android:id="@+id/btnBorrar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Borrar" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="?android:attr/listDivider" />
+        android:text="Volver" />
 
 </LinearLayout>
