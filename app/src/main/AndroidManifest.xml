@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Feedback1_GestorNovelas"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -23,6 +24,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".NuevaNovelaActivity"
+            android:exported="true"
+            ></activity>
+
+        <activity
+            android:name=".AcercaDeActivity"
+            android:exported="true"
+            ></activity>
+
     </application>
 
 </manifest>
