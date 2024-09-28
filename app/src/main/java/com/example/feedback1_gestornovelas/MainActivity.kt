@@ -23,23 +23,26 @@ class MainActivity : ComponentActivity() {
     private lateinit var recyclerNovelas: RecyclerView
     private lateinit var novelasAdapter: NovelasAdapter
     private var listadoNovelas: MutableList <Novela> = NovelasRepository.novelas
+    //declaramos todas las variables necesarias para hacer la aplicación funcional
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main) //se establece la vista de la actividad
 
         btnAlta = findViewById(R.id.btnAlta)
         btnAcercaDe = findViewById(R.id.btnAcercaDe)
+        //asociamos a los botones el identificador del boton del layout
 
         btnAlta.setOnClickListener {
             val intent = Intent(this, NuevaNovelaActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_ALTA_NOVELA)
-        }
+        } //iniciamos la actividad y para que la lista se reinicie al añadir o no un nuevo elemento
 
         btnAcercaDe.setOnClickListener {
             val intent = Intent(this, AcercaDeActivity::class.java)
             startActivity(intent)
         }
+        //iniciamos la nueva actividad acerca de
 
         novelasAdapter = NovelasAdapter(listadoNovelas){
             novela -> val intent = Intent(this, VerNovelaActivity::class.java)
@@ -49,10 +52,11 @@ class MainActivity : ComponentActivity() {
             intent.putExtra("Sinopsis", novela.sinopsis)
             startActivity(intent)
         }
+        //iniciamos el adaptador del recyclerview con una lista de novelas pasando la informacion de la novela que se quiere visualizar
 
-        recyclerNovelas = findViewById(R.id.recyclerNovelas)
-        recyclerNovelas.adapter = novelasAdapter
-        recyclerNovelas.layoutManager = LinearLayoutManager(this)
+        recyclerNovelas = findViewById(R.id.recyclerNovelas) //iniciamos el recycler
+        recyclerNovelas.adapter = novelasAdapter //asociamos el adaptar
+        recyclerNovelas.layoutManager = LinearLayoutManager(this) //y asociamos el linear layput
 
     }
 
@@ -61,10 +65,12 @@ class MainActivity : ComponentActivity() {
         if (requestCode == REQUEST_CODE_ALTA_NOVELA && resultCode == RESULT_OK) {
             novelasAdapter.notifyDataSetChanged()
         }
+        //con esta funcion conseguimos que en el caso de que se haya creado una nueva novela y el resultado haya sido exitoso
     }
 
     companion object {
         private const val REQUEST_CODE_ALTA_NOVELA = 1
     }
+    //creamos una constante que identifica la peticion de alta de una novela
 
 }

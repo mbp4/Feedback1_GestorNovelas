@@ -12,17 +12,11 @@ class VerNovelaActivity: ComponentActivity() {
     private lateinit var txt3: TextView
     private lateinit var txt4: TextView
     private lateinit var btnVolver: Button
-    /*
-    private var txtTitulo: TextView = findViewById(R.id.txtTitulo)
-    private var txtAutor: TextView = findViewById(R.id.txtAutor)
-    //private var txtAño: TextView = findViewById(R.id.txtAño)
-    private var txtSinopsis: TextView = findViewById(R.id.txtSinopsis)
-
-     */
+    //creamos las variables necesarias para poder hacer la activity funcional
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ver)
+        setContentView(R.layout.activity_ver) //asociamos un layout
         txt1 = findViewById(R.id.txt1)
         val titulo = intent.getStringExtra("Titulo")
         txt1.text = titulo
@@ -38,24 +32,13 @@ class VerNovelaActivity: ComponentActivity() {
         txt4 = findViewById(R.id.txt4)
         val año = intent.getIntExtra("Año", 0).toString()
         txt4.text = año
+        //le damos a cada uno de los atributos necesarios su valor correspondiente para que se muestre por pantalla
 
         btnVolver = findViewById(R.id.btnVolver)
         btnVolver.setOnClickListener {
             finish()
         }
-
-        /*
-        val titulo = intent.getStringExtra("Titulo")
-        val autor = intent.getStringExtra("Autor")
-        //val año = intent.getIntExtra("Año", 0).toString()
-        val sinopsis = intent.getStringExtra("Sinopsis")
-
-        txtTitulo.text = titulo
-        txtAutor.text = autor
-        //txtAño.text = año
-        txtSinopsis.text = sinopsis
-
-         */
+        //creamos el boton que nos llevara de vuelta a la aplicación inicial
 
     }
 
