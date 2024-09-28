@@ -55,6 +55,7 @@ En esta activity tendremos un TextView inicial con el titulo de la aplicacion, d
 Después de los botones nos encontramos la lista de novelas existente donde solo se muestra el autor y el título de la obra, esta lista tiene dos botones: 
 
  -> Botón ver: este botón redirige al usuario a una nueva pantalla donde se muestra toda la informacion de la novela elegida.
+ 
  -> Botón eliminar: este botón eliminará de la lista la novela elegida.
 
  ### Novela
